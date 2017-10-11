@@ -1,4 +1,4 @@
-spring.datasource.url: postgres://bihldxqnewfrzf:25fc96dab87b11c6e882fec18630e4b567d2e64dd4fb6a7232a9370eecbb1537@ec2-184-72-223-199.compute-1.amazonaws.com:5432/dedmi4260mau4v
+spring.datasource.url: ${JDBC_DATABASE_URL:}
 spring.datasource.hikari.connection-timeout=30000
 spring.datasource.hikari.maximum-pool-size=10
 
