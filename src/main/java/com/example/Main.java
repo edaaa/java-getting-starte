@@ -25,6 +25,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -32,6 +34,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -53,8 +56,18 @@ public class Main {
     return "index";
   }
 
-   @RequestMapping(value={"/login"})
-    public String login(){
+
+   @RequestMapping(value="/login" , method= RequestMethod.GET)
+   public List<User> student(@RequestParam("name") String name, @RequestParam("password") String password) {
+     List<User> users = new ArrayList<User>();
+     User s = new User();
+     s.setName(name);
+     s.setPassword(password);
+     users.add(s);
+     return users;
+   }
+
+  public String login(){
         return "login";
     }
 
